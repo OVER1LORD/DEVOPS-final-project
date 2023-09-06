@@ -33,7 +33,7 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
                 git branch: 'main',
-                    url: 'https://github.com/nanu1605/DEVOPS-final-project.git'
+                    url: 'https://github.com/OVER1LORD/DEVOPS-final-project.git'
             }
         }
         stage('Build') {
@@ -51,9 +51,9 @@ pipeline {
             steps {
                 echo "Deploying"
                 deploy adapters: [tomcat9 (
-                    credentialsId: 'tom-gui-admin',
+                    credentialsId: 'tomcat',
                     path: '',
-                    url: 'http://23.101.158.243:8088/'
+                    url: 'http://172.174.237.187:8088/'
                 )],
                 contextPath: 'DEVOPS-final-Project',
                 onFailure: 'false',
