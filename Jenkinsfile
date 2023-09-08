@@ -74,7 +74,7 @@ pipeline {
         DOCKER_HUB_PASSWORD = credentials('atharva@123')
         IMAGE_NAME = "final-project/finalimg"
     }
-            stage('Checkout') {
+            stage('Checkout2') {
             steps {
                 checkout scm
             }
