@@ -68,6 +68,17 @@ pipeline {
                 }
             }
         }
+            environment {
+        // Define environment variables if needed
+        DOCKER_HUB_USERNAME = credentials('over1lord')
+        DOCKER_HUB_PASSWORD = credentials('atharva@123')
+        IMAGE_NAME = "final-project/finalimg"
+    }
+            stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 script {
