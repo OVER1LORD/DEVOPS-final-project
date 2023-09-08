@@ -79,7 +79,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image from the Dockerfile
-                    sh 'docker build -t finalimg .'
+                    sh 'docker build -t over1lord/finalimg .'
                 }
             }
         }
