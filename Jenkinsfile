@@ -23,7 +23,11 @@
 pipeline {
     agent any
         
-
+    environment {
+        // Define environment variables if needed
+        DOCKERHUB_CREDENTIALS = "dockerhub"
+        DOCKER_IMAGE = "over1lord/finalimg"
+    }
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "M3"
@@ -68,15 +72,8 @@ pipeline {
                 }
             }
         }
-            environment {
-        // Define environment variables if needed
-        DOCKERHUB_CREDENTIALS = "dockerhub"
-        DOCKER_IMAGE = "over1lord/finalimg"
-    }
-            stage('Checkout2') {
-            steps {
-                checkout scm
-            }
+            
+            
         }
         stage('Build Docker Image') {
             steps {
