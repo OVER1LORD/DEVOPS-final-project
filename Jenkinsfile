@@ -90,7 +90,7 @@ pipeline {
                     
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
                         // Push the Docker image to Docker Hub
-                        docker.image(over1lord/finalimg).push()
+                        docker.image('over1lord/finalimg').push()
                     }
                 }
             }
