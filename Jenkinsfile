@@ -70,9 +70,8 @@ pipeline {
         }
             environment {
         // Define environment variables if needed
-        DOCKER_HUB_USERNAME = credentials('over1lord')
-        DOCKER_HUB_PASSWORD = credentials('atharva@123')
-        IMAGE_NAME = "final-project/finalimg"
+        DOCKERHUB_CREDENTIALS = "dockerhub"
+        DOCKER_IMAGE = "over1lord/finalimg"
     }
             stage('Checkout2') {
             steps {
@@ -83,7 +82,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image from the Dockerfile
-                    docker.build FinalPrj-img, "-f Dockerfile ."
+                    sh 'docker build -t over1lord/finalimg'
                 }
             }
         }
@@ -92,9 +91,9 @@ pipeline {
             steps {
                 script {
                     
-                    docker.withRegistry('https://registry.hub.docker.com', 'dckr_pat_OWDHTEXWPLViR8hochz6TX-8Iwk') {
+                    docker.withRegistry('https://registry.hub.docker.com', 'DOCKERHUB_CREDENTIALS') {
                         // Push the Docker image to Docker Hub
-                        docker.image(FinalPrj-img).push()
+                        docker.image(DOCKER_IMAGE).push()
                     }
                 }
             }
