@@ -23,11 +23,11 @@
 pipeline {
     agent any
         
-    environment {
-        // Define environment variables if needed
-        DOCKERHUB_CREDENTIALS = "dockerhub"
-        DOCKER_IMAGE = "over1lord/finalimg"
-    }
+    // environment {
+    //     // Define environment variables if needed
+    //     DOCKERHUB_CREDENTIALS = "dockerhub"
+    //     DOCKER_IMAGE = "over1lord/finalimg"
+    // }
     tools {
         // Install the Maven version configured as "M3" and add it to the path.
         maven "M3"
@@ -88,9 +88,9 @@ pipeline {
             steps {
                 script {
                     
-                    docker.withRegistry('https://registry.hub.docker.com', 'DOCKERHUB_CREDENTIALS') {
+                    docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
                         // Push the Docker image to Docker Hub
-                        docker.image(DOCKER_IMAGE).push()
+                        docker.image(over1lord/finalimg).push()
                     }
                 }
             }
