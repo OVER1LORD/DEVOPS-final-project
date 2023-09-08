@@ -66,25 +66,25 @@ pipeline {
                 }
             }
         }
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    // Build the Docker image from the Dockerfile
-                    docker.build FinalPrj-img, "-f Dockerfile ."
-                }
-            }
-        }
+        // stage('Build Docker Image') {
+        //     steps {
+        //         script {
+        //             // Build the Docker image from the Dockerfile
+        //             docker.build FinalPrj-img, "-f Dockerfile ."
+        //         }
+        //     }
+        // }
 
-        stage('Publish to Docker Hub') {
-            steps {
-                script {
+        // stage('Publish to Docker Hub') {
+        //     steps {
+        //         script {
                     
-                    docker.withRegistry('https://registry.hub.docker.com', 'dckr_pat_OWDHTEXWPLViR8hochz6TX-8Iwk') {
-                        // Push the Docker image to Docker Hub
-                        docker.image(FinalPrj-img).push()
-                    }
-                }
-            }
-        }
+        //             docker.withRegistry('https://registry.hub.docker.com', 'dckr_pat_OWDHTEXWPLViR8hochz6TX-8Iwk') {
+        //                 // Push the Docker image to Docker Hub
+        //                 docker.image(FinalPrj-img).push()
+        //             }
+        //         }
+        //     }
+        // }
     }
 }
